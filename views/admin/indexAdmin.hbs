@@ -1,0 +1,27 @@
+{{>navbar}}
+    
+{{>areaP}}
+
+<br><br>
+
+<form action="/admin/entrar" method="post">
+  <fieldset>
+      <div class="form-group">
+        <input type="text" class="form-control" required placeholder="Nombre de Usuario" name="username">
+      </div>
+      <br>
+      <div class="form-group">
+        <input type="password" class="form-control" required placeholder="Contraseña" name="password">
+      </div>
+    <br>
+    <center>
+      <button type="submit" class="buttonAP">
+          <span>Entrar</span>
+      </button>
+    </center>
+  </fieldset>
+</form>
+
+<br>
+
+{{>footer}}

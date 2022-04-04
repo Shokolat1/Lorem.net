@@ -1,0 +1,103 @@
+{{#if session}}
+    {{>navActivo}}
+{{else}}
+    {{>navbar}}
+{{/if}}
+
+    
+{{>areaP}}
+
+<br>
+<center>
+    {{>mision}}
+</center>
+
+<div class="container-fluid mb-3">
+    <div class="text-center mt-5">
+        <h1 class="nuestros">Nuestros Servicios</h1>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <a href="/servicios/mantenimiento" style="text-decoration: none;">
+                <div class="box">
+                    <div class="our-services ssl">
+                        <div class="circle">
+                            <div class="icon"><ion-icon name="refresh-outline"></ion-icon></div>
+                        </div>
+                        <h4>Mantenimiento</h4>
+                        <p class="serviciosIndex">Inspecciones, reparaciones, y mantenimiento preventivo para 
+                            tus dispositivos tecnológicos.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/servicios/redes" style="text-decoration: none;">
+                <div class="box">
+                    <div class="our-services ssl">
+                        <div class="circle">
+                            <div class="icon"><ion-icon name="wifi-outline"></ion-icon> </div>
+                        </div>
+                        <h4>Redes</h4>
+                        <p class="serviciosIndex">Instalaciones certificadas, en colaboración con CISCO &copy;.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/servicios/seguridad" style="text-decoration: none;">
+                <div class="box">
+                    <div class="our-services ssl">
+                        <div class="circle" "text-center">
+                            <div class="icon"><ion-icon name="lock-closed"></ion-icon></div>
+                        </div>  
+                        <h4>Seguridad</h4>
+                        <p class="serviciosIndex">Toda tu información encriptada, respaldada, y guardada bajo llave.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 ind_serv">
+            <a href="/servicios/servers" style="text-decoration: none;">
+                <div class="box">
+                    <div class="our-services ssl">
+                        <div class="circle">
+                            <div class="icon"><ion-icon name="server-outline"></ion-icon></div>
+                        </div>
+                        <h4>Servidores</h4>
+                        <p class="serviciosIndex">Servicios de hosting, guardados en nube privada, entre otros.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="/servicios/webDev" style="text-decoration: none;">
+                <div class="box">
+                    <div class="our-services ssl">
+                        <div class="circle"> 
+                            <div class="icon"><ion-icon name="laptop-outline"></ion-icon></div>
+                        </div>
+                        <h4>Desarrollo Web</h4>
+                        <p class="serviciosIndex">Tus ideas plasmadas en una página web, diseñada y programada por profesionales.</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<br>
+
+{{>sobrenosotros}}
+<center>
+<br>
+<a href="/contacto">
+    <button type="button" class="buttonAP">
+        <span>Contáctanos</span>
+    </button>
+</a>
+</center>
+<br>
+
+{{>footer}}

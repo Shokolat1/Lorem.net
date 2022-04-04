@@ -1,0 +1,68 @@
+{{#if session}}
+    {{>navActivo}}
+{{else}}
+    {{>navbar}}
+{{/if}}
+    
+{{>areaP}}
+
+<br>
+<div class="accordion">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="p1">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c1" aria-expanded="false" aria-controls="c1">
+        Formas de pago disponibles
+      </button>
+    </h2>
+    <div id="c1" class="accordion-collapse collapse" aria-labelledby="p1" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Debido a la situación actual de salud, todo servicio se pagará a través de transferencia bancaria o depósito. 
+        Se aceptan <strong>VISA, Mastercard, y Mercado Pago</strong>.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="p2">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c2" aria-expanded="false" aria-controls="c2">
+        Tiempo de entrega de cotizaciones
+      </button>
+    </h2>
+    <div id="c2" class="accordion-collapse collapse" aria-labelledby="p2" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Como empresa, nuestra filosofía es dar lo mejor para nuestros clientes. Por ello, queremos que cada 
+        cotización que se haga tenga el mejor precio de acuerdo a las necesidades de cada proyecto. Tomando 
+        en cuenta lo anterior, las cotizaciones tardan en entregarse a más tardar 2 días hábiles.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="p3">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c3" aria-expanded="false" aria-controls="c3">
+        Horarios Hábiles de la empresa
+      </button>
+    </h2>
+    <div id="c3" class="accordion-collapse collapse" aria-labelledby="p3" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Lorem tiene un horario de trabajo hábil que va desde las 8:00 am hasta las 7:30 pm.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="p5">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c5" aria-expanded="false" aria-controls="c5">
+        Loremsio
+      </button>
+    </h2>
+    <div id="c5" class="accordion-collapse collapse" aria-labelledby="p5" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        Nuestra empresa ha creado una pequeña inteligencia artificial en forma de chatbot. Su nombre es 
+        <strong>Loremsio</strong>. Si tienes alguna duda que no se encuentre en esta página, ¡puedes <a href="/chat">
+          ir a preguntarle</a>!
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+
+{{>footer}}

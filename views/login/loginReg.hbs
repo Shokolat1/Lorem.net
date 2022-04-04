@@ -1,0 +1,113 @@
+{{#if session}}
+    {{>navActivo}}
+{{else}}
+    {{>navbar}}
+{{/if}}
+
+{{>areaP}}
+
+<br>
+
+<form action="/login/entrar" method="post">
+  <fieldset>
+    <center>
+        <legend style="color: black;">Inicio de Sesión</legend>
+    </center>
+    <br><br>
+    <div class="fGridLogin">
+        {{!-- ICONO EMAIL --}}
+        <div class="gridA3">
+            <div class="icon-cont"><ion-icon name="mail"></ion-icon></div>
+        </div>
+        {{!-- EMAIL LOGIN --}}
+        <div class="form-group gridB3">
+            <input type="text" class="form-control" placeholder="E-mail" name="username">
+        </div>
+        {{!-- ICONO CONTRASEÑA --}}
+        <div class="gridC3">
+            <div class="icon-cont"><ion-icon name="lock-closed"></ion-icon></div>
+        </div>
+        {{!-- CONTRASEÑA LOGIN--}}
+        <div class="form-group gridD3">
+            <input type="password" class="form-control" placeholder="Contraseña" name="password">
+        </div>
+    </div>
+    <br>
+    <center>
+        <button type="submit" class="buttonAP">
+            <span>Entrar</span>
+        </button>
+    </center>
+  </fieldset>
+</form>
+
+<br>
+    <div class="separacion"></div>
+<br>
+
+<form action="/login/register" method="post">
+  <fieldset>
+    <center>
+        <legend style="color: black;">Formulario de Registro</legend>
+    </center>
+    <br><br>
+    <div class="fGridReg">
+      {{!-- ICONO NOMBRE --}}
+      <div class="gridA2">
+        <div class="icon-cont"><ion-icon name="person-circle"></ion-icon></div>
+      </div>
+      {{!-- NOMBRE(S) Y APELLIDOS --}}
+      <div class="form-group gridB2">
+        <input type="text" class="form-control" placeholder="Nombre" required name="nomUser">
+      </div>
+      <div class="form-group gridC2">
+        <input type="text" class="form-control" placeholder="Apellido" required name="apUser">
+      </div>
+      {{!-- ICONO EMAIL --}}
+      <div class="gridD2">
+        <div class="icon-cont"><ion-icon name="mail"></ion-icon></div>
+      </div>
+      {{!-- EMAIL --}}
+      <div class="form-group gridE2">
+        <input type="text" class="form-control" placeholder="E-mail" required name="emailUser">
+      </div>
+      {{!-- ICONO CONTRASEÑA --}}
+      <div class="gridF2">
+        <div class="icon-cont"><ion-icon name="lock-closed"></ion-icon></div>
+      </div>
+      {{!-- CONTRASEÑA Y CONFIRMACIÓN --}}
+      <div class="form-group gridG2">
+        <input type="password" class="form-control" placeholder="Contraseña" required name="passUser">
+      </div>
+      <div class="form-group gridH2">
+        <input type="password" class="form-control" placeholder="Confirmar Contraseña" required name="confPass">
+      </div>
+      {{!-- ICONO CEL --}}
+      <div class="gridI2">
+        <div class="icon-cont"><ion-icon name="call"></ion-icon></div>
+      </div>
+      {{!-- CEL --}}
+      <div class="form-group gridJ2">
+        <input type="text" class="form-control" placeholder="Teléfono celular" required name="celUser">
+      </div>
+      {{!-- ICONO CIUDAD --}}
+      <div class="gridK2">
+        <div class="icon-cont"><ion-icon name="location"></ion-icon></div>
+      </div>
+      {{!-- CIUDAD --}}
+      <div class="form-group gridL2">
+        <input type="text" class="form-control" placeholder="Ciudad de destino" required name="ciudadUser">
+      </div>
+    </div>
+    <br>
+    <center>
+        <button type="submit" class="buttonAP">
+            <span>Registrarse</span>
+        </button>
+    </center>
+  </fieldset>
+</form>
+
+<br>
+
+{{>footer}}

@@ -1,0 +1,72 @@
+{{>navActivo}}
+
+{{>areaP}}
+
+<br>
+
+<form action="/login/editar" method="post">
+  <fieldset>
+    <center>
+        <legend style="color: black;">Formulario de Edición</legend>
+    </center>
+    <br><br>
+    <div class="fGridReg">
+      {{!-- ICONO NOMBRE --}}
+      <div class="gridA2">
+        <div class="icon-cont"><ion-icon name="person-circle"></ion-icon></div>
+      </div>
+      {{!-- NOMBRE(S) Y APELLIDOS --}}
+      <div class="form-group gridB2">
+        <input type="text" class="form-control" placeholder="Nombre" value="{{session.nomUser}}" name="nomUser">
+      </div>
+      <div class="form-group gridC2">
+        <input type="text" class="form-control" placeholder="Apellido" value="{{session.apUser}}" name="apUser">
+      </div>
+      {{!-- ICONO EMAIL --}}
+      <div class="gridD2">
+        <div class="icon-cont"><ion-icon name="mail"></ion-icon></div>
+      </div>
+      {{!-- EMAIL --}}
+      <div class="form-group gridE2">
+        <input type="text" class="form-control" placeholder="E-mail" readonly value="{{session.email}}" name="emailEdit">
+      </div>
+      {{!-- ICONO CONTRASEÑA --}}
+      <div class="gridF2">
+        <div class="icon-cont"><ion-icon name="lock-closed"></ion-icon></div>
+      </div>
+      {{!-- CONTRASEÑA Y CONFIRMACIÓN --}}
+      <div class="form-group gridG2">
+        <input type="text" class="form-control" placeholder="Contraseña" name="passEdit">
+      </div>
+      <div class="form-group gridH2">
+        <input type="text" class="form-control" placeholder="Confirmar Contraseña" name="confPassEdit">
+      </div>
+      {{!-- ICONO CEL --}}
+      <div class="gridI2">
+        <div class="icon-cont"><ion-icon name="call"></ion-icon></div>
+      </div>
+      {{!-- CEL --}}
+      <div class="form-group gridJ2">
+        <input type="text" class="form-control" placeholder="Teléfono celular" value="{{session.cel}}" name="celUser">
+      </div>
+      {{!-- ICONO CIUDAD --}}
+      <div class="gridK2">
+        <div class="icon-cont"><ion-icon name="location"></ion-icon></div>
+      </div>
+      {{!-- CIUDAD --}}
+      <div class="form-group gridL2">
+        <input type="text" class="form-control" placeholder="Ciudad de destino" value="{{session.ciudad}}" name="ciudadUser">
+      </div>
+    </div>
+    <br>
+    <center>
+        <button type="submit" class="buttonAP">
+            <span>Editar</span>
+        </button>
+    </center>
+  </fieldset>
+</form>
+
+<br>
+
+{{>footer}}

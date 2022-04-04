@@ -1,0 +1,42 @@
+{{>navAdmin}}
+    
+{{>areaP}}
+
+<br>
+
+<table class="table tablaCot" id="x">
+  <thead>
+    <tr>
+      <th scope="col">Nombre(s)</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Tel. Celular</th>
+      <th scope="col">Ciudad de destino</th>
+      <th scope="col">Servicio</th>
+      <th scope="col">Notas extra</th>
+      <th scope="col">Eliminar Cotización</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each cotis}}
+    <tr>
+      <td>{{this.nomUser}}</td>
+      <td>{{this.apUser}}</td>
+      <td>{{this.email}}</td>
+      <td>{{this.cel}}</td>
+      <td>{{this.ciudad}}</td>
+      <td>{{this.servicio}}</td>
+      <td>{{this.infoExtra}}</td>
+      <td>
+        <a href="/admin/{{this._id}}">
+          <button type="button" class="btn btn-danger" data-id="{{this._id}}">Eliminar</button>
+        </a>
+      </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<br>
+
+{{>footer}}

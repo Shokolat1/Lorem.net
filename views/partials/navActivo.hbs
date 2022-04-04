@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-scroll">
+  <div class="container-fluid">
+    <a class="navbar-brand lorem" href="/">Lorem</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse nav1 navActivo" id="navbarColor03" >
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Servicios</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="/servicios">Nuestros Servicios</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/servicios/mantenimiento">Mantenimiento</a>
+            <a class="dropdown-item" href="/servicios/redes">Redes</a>
+            <a class="dropdown-item" href="/servicios/seguridad">Seguridad</a>
+            <a class="dropdown-item" href="/servicios/servers">Servidores</a>
+            <a class="dropdown-item" href="/servicios/webDev">Desarrollo Web</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/acercade">Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/faq">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contacto">Contacto</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/chat">Chat</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{session.nomUser}}</a>
+          <div class="dropdown-menu">
+            
+            <a class="dropdown-item" href="/login/editar">Editar Usuario</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/login/logout">Cerrar Sesión</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

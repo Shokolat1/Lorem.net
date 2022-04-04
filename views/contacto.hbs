@@ -1,0 +1,85 @@
+{{#if session}}
+    {{>navActivo}}
+{{else}}
+    {{>navbar}}
+{{/if}}
+    
+{{>areaP}}
+
+<br>
+
+<form action="/contacto" method="post">
+  <fieldset>
+    <center>
+        <legend style="color: black;">Formulario de Contacto</legend>
+    </center>
+    <br><br>
+    <div class="fGrid">
+      {{!-- ICONO NOMBRE --}}
+      <div class="gridA">
+        <div class="icon-cont"><ion-icon name="person-circle"></ion-icon></div>
+      </div>
+      {{!-- NOMBRE --}}
+      <div class="form-group gridB">
+        <input type="text" class="form-control" placeholder="Nombre(s)" readonly value="{{session.nomUser}}" name="nomCot">
+      </div>
+      <div class="form-group gridC">
+        <input type="text" class="form-control" placeholder="Apellidos" readonly value="{{session.apUser}}" name="apCot">
+      </div>
+      {{!-- ICONO EMAIL --}}
+      <div class="gridD">
+        <div class="icon-cont"><ion-icon name="mail"></ion-icon></div>
+      </div>
+      {{!-- EMAIL --}}
+      <div class="form-group gridE">
+        <input type="text" class="form-control" placeholder="E-mail" readonly value="{{session.email}}" name="emailCot">
+      </div>
+      {{!-- ICONO CEL --}}
+      <div class="gridF">
+        <div class="icon-cont"><ion-icon name="call"></ion-icon></div>
+      </div>
+      {{!-- CEL --}}
+      <div class="form-group gridG">
+        <input type="text" class="form-control" placeholder="Teléfono celular" readonly value="{{session.cel}}" name="celCot">
+      </div>
+      {{!-- ICONO CIUDAD --}}
+      <div class="gridH">
+        <div class="icon-cont"><ion-icon name="location"></ion-icon></div>
+      </div>
+      {{!-- CIUDAD --}}
+      <div class="form-group gridI">
+        <input type="text" class="form-control" placeholder="Ciudad de destino" readonly value="{{session.ciudad}}" name="ciudadCot">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="formSel" class="form-label mt-4">Elija el servicio a requerir</label>
+      <select class="form-select" id="formSel" name="servicio">
+        <option>Mantenimiento</option>
+        <option>Redes</option>
+        <option>Seguridad</option>
+        <option>Servidores</option>
+        <option>Desarrollo Web</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="formExtra" class="form-label mt-4">Información extra (opcional)</label>
+      <textarea class="form-control" id="formExtra" rows="3" name="infoExtra"></textarea>
+    </div>
+    <br>
+    <center>
+      <button type="submit" class="buttonAP">
+          <span>Cotizar</span>
+      </button>
+    </center>
+  </fieldset>
+</form>
+
+
+<br><br>
+
+<center>
+    <div class="imgForm"></div>
+</center>
+<br>
+
+{{>footer}}

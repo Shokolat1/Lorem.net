@@ -1,0 +1,64 @@
+{{#if session}}
+    {{>navActivo}}
+{{else}}
+    {{>navbar}}
+{{/if}}
+    
+{{>areaP}}
+
+<br>
+<center>
+    <div class="descrSG">
+        <div class="descSerG">
+            <h4>A través de los años, <strong>Lorem</strong> ha ido creciendo y posicionándose como una de las
+            mejores compañías provedoras de servicios tecnológicos. Hasta ahora proveemos cinco servicios distintos
+            para todo tipo de proyectos y lugares, con más servicios por añadirse.</h4>
+        </div>
+    </div>
+</center>
+    <br>
+    <div class="servEsp">
+        <a href="/servicios/webDev">
+            <div>
+                <div class="webSG"></div>
+                <div class="overlay">
+                <h4 class="x">Web Dev</h4>
+                </div>
+            </div>
+        </a>
+        <a href="/servicios/redes">
+            <div>
+                <div class="redSG"></div>
+                <div class="overlay">
+                <h4 class="x">Redes</h4>
+                </div>
+            </div>
+        </a>
+        <a href="/servicios/mantenimiento">
+            <div>
+                <div class="mantSG"></div>
+                <div class="overlay">
+                <h4 class="xq">Mantenimiento</h4>
+                </div>
+            </div>
+        </a>
+            <div>
+            <a href="/servicios/servers">
+                <div class="serverSG"></div>
+                <div class="overlay">
+                <h4 class="y">Servidores</h4>
+                </div>
+            </a>
+            </div>
+        <a href="/servicios/seguridad">
+            <div>
+                <div class="seguSG"></div>
+                <div class="overlay">
+                <h4 class="z">Seguridad</h4>
+                </div>
+            </div>
+        </a>
+    </div>
+<br>
+
+{{>footer}}
