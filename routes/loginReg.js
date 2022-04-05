@@ -12,17 +12,16 @@ passport.use(new LocalStrategy(
     await client.connect();
     const db = client.db(dbName);
     const collection = db.collection('usuarios');
-    await collection.findOne({ email: username }, function (err, user) {
-      if (err) {return done(err);}
-      if (!user) {return done(null, false);}
+    var usuario = await collection.findOne({ email: username })
+    if (!usuario) {return done(null, false);}
 
-      bcrypt.compare(password,user.pass, function(err, res) {
-        if(err){
-          console.log(err)
-        } else {return done(null, user);}
-        return done(null, false);
-      });
-    });
+    var comparar = await bcrypt.compare(password,usuario.pass)
+    if(!comparar){
+      console.log("Error al poner la contraseña")
+      return done(null, false);
+    } else {
+      return done(null, usuario);
+    }
   }
 ));
 
@@ -36,32 +35,6 @@ router.get('/', function(req, res, next) {
     descripP: 'Mayor personalización a tu alcance', 
     imgP: 'imgP_login' });
 });
-
-router.get('/editar', function(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  } else {
-    res.redirect('/login')
-  }}, function(req, res, next) {
-    res.render('login/editarUsuario', { titP: 'Ajustes del Usuario',
-    titH: 'Lorem.net - Ajustes',
-    descripP: 'Mayor personalización a tu alcance', 
-    imgP: 'imgP_login',
-    session: req.user});
-});
-
-router.post('/editar', function(req, res, next){
-  editUser(req.body)
-  .then(()=>{
-    res.redirect('/')
-  })
-  .catch((err)=>{
-    console.log(err);
-  })
-  .finally(()=>{
-    client.close();
-  })
-})
   
 router.post('/register', function(req, res, next){
     regUser(req.body)
@@ -98,6 +71,32 @@ router.post('/entrar',
     }
   });
 
+router.get('/editar', function(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.redirect('/login')
+  }}, function(req, res, next) {
+    res.render('login/editarUsuario', { titP: 'Ajustes del Usuario',
+    titH: 'Lorem.net - Ajustes',
+    descripP: 'Mayor personalización a tu alcance', 
+    imgP: 'imgP_login',
+    session: req.user});
+});
+
+router.post('/editar', function(req, res, next){
+  editUser(req.body)
+  .then(()=>{
+    res.redirect('/')
+  })
+  .catch((err)=>{
+    console.log(err);
+  })
+  .finally(()=>{
+    client.close();
+  })
+})
+
 router.get('/logout', function(req, res, next) {
     req.logout();
     res.redirect('/');
@@ -107,7 +106,7 @@ async function regUser(datos){
   await client.connect();
   const db = client.db(dbName);
   const collection = db.collection('usuarios');
-  var response = await collection.findOne()
+  var response = await collection.findOne({ email: datos.emailUser })
   if (response) {
     console.log('Ya existe un usuario con ese correo')
     throw false
@@ -137,22 +136,43 @@ async function regUser(datos){
 }
 
 async function editUser(datos){
-  if (datos.passEdit !== datos.confPassEdit) {
-    throw 'Las contraseñas no coinciden'
-  }else{
-    var hashpass = await bcrypt.hash(datos.passEdit,10);
-
-    await client.connect();
-    const db = client.db(dbName);
-    const collection = db.collection('usuarios');
+  await client.connect();
+  const db = client.db(dbName);
+  const collection = db.collection('usuarios');
+  
+  if(!datos.passEdit){
     await collection.updateOne({ email: datos.emailEdit },
       {$set:
         {nomUser: datos.nomUser,
-        apUser: datos.apUser,
-        pass: hashpass,
-        cel: datos.celUser,
-        ciudad: datos.ciudadUser}
-      })
-  }};
+          apUser: datos.apUser,
+          cel: datos.celUser,
+          ciudad: datos.ciudadUser}
+      }
+    )
+  } else {
+    if(!datos.confPassEdit && datos.passEdit){
+      throw false
+    }
+  
+    var usuario = await collection.findOne({email: datos.emailEdit})
+    var respuesta = await bcrypt.compare(datos.confPassEdit, usuario.pass);
+
+    if (!respuesta) {
+      console.log(respuesta)
+      throw false
+    } else {
+      var hashpass = await bcrypt.hash(datos.passEdit,10);
+      await collection.updateOne({ email: datos.emailEdit },
+        {$set:
+          {nomUser: datos.nomUser,
+          apUser: datos.apUser,
+          pass: hashpass,
+          cel: datos.celUser,
+          ciudad: datos.ciudadUser}
+        }
+      ) 
+    }
+  }
+};
 
 module.exports = router;
