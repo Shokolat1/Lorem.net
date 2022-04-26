@@ -38,11 +38,15 @@ router.get('/chat', function(req, res, next) {
   } else {
     res.redirect('/login')
   }}, function(req, res, next) {
+
+  let type = req.user.profile
+  
   res.render('chat', { titP: 'Servicio al Cliente',
   titH: 'Lorem.net - CHAT',
   descripP: 'Comunícate con nuestros profesionales', 
   imgP: 'imgP_contacto',
-  session: req.user});
+  session: req.user,
+  tipo: type.startsWith('a')});
 });
 
 // PÁGINA CONTACTO/COTIZACION

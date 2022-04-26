@@ -1,8 +1,4 @@
-{{#if session}}
-    {{>navActivo}}
-{{else}}
-    {{>navbar}}
-{{/if}}
+{{>navActivo}}
     
 {{>areaP}}
 
@@ -26,7 +22,7 @@
                 </ul>
             </div>
         </div>
-        <div class="card-body p-4 chatX" style="height: 400px; overflow: auto;">
+        <div class="card-body p-4 chatX" id="chatX" style="height: 400px; overflow: auto;">
 
             <div class="d-flex align-items-baseline mb-4">
                 <div class="position-relative avatar">
@@ -49,11 +45,18 @@
         </div>
         <div class="card-footer bg-white position-absolute w-100 bottom-0 m-0 p-1">
             <div class="input-group">
-                <input type="text" class="form-control border-0" placeholder="Escriba su mensaje...">
+                <input type="text" id="txtEnviar" class="form-control border-0" placeholder="Escriba su mensaje...">
+                <button id="btnChat" class="btn btn-outline-info">Enviar</button>
             </div>
         </div>
     </div>
 </div>
+    {{#if tipo}}
+        <div id="uCh"></div>
+    {{/if}}
 <br>
 
 {{>footer}}
+
+<script src="/socket.io/socket.io.min.js"></script>
+<script src="./javascripts/chat.js"></script>
