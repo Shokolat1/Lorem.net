@@ -4,18 +4,6 @@ var {client, dbName} = require('../db/mongo');
 var passport = require('passport');
 var ObjectId = require('mongodb').ObjectId
 
-router.get('/', function(req, res, next) {
-  if (req.isAuthenticated()) {
-    req.logout();
-    res.redirect('/');
-  } else {
-    res.render('admin/indexAdmin', { titP: 'Inicio de Sesión de Administrador',
-    descripP: 'Ingrese usuario y contraseña para entrar', 
-    titH: 'Lorem.net - ADMIN',
-    imgP: 'imgP_admin'})
-  }
-});
-
 router.post('/entrar',
   passport.authenticate('local', { failureRedirect: '/admin' }),
     function(req, res) {
