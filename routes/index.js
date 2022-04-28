@@ -3,6 +3,8 @@ var router = express.Router();
 var {client, dbName} = require('../db/mongo');
 var passport = require('passport');
 const { ObjectId } = require('mongodb');
+var mercadopago = require('mercadopago');
+mercadopago.configurations.setAccessToken("APP_USR-6766770717086788-042719-6eef27ad0bdd2a67d1a4a1aeec914d02-1113901710");
 
 passport.deserializeUser(async function(id, done) {
   await client.connect();
@@ -98,6 +100,64 @@ async function nuevaCot(datos){
       servicio: datos.servicio,
       infoExtra: datos.infoExtra
   })
+}
+
+// MERCADO PAGO
+router.post('/process_payment', function(req, res, next){
+  mercadopago.payment.save(req.body)
+  .then(function(response) {
+    console.log(response);
+    const { status, status_detail, id } = response.body;
+    res.status(response.status).json({ status, status_detail, id });
+  })
+  .catch(function(error) {
+    console.error(error);
+  });
+})
+
+router.post("/process_payment", (req, res, next) => {
+  const { body } = req;
+  const { payer } = body;
+
+  const paymentData = {
+    transaction_amount: Number(body.transaction_amount),
+    token: body.token,
+    description: body.description,
+    installments: Number(body.installments),
+    payment_method_id: body.paymentMethodId,
+    issuer_id: body.issuerId,
+    payer: {
+      email: payer.email,
+      identification: {
+        type: payer.identification.docType,
+        number: payer.identification.docNumber,
+      },
+    },
+  };
+  mercadopago.payment
+    .save(paymentData)
+    .then(function (response) {
+      const { response: data } = response;
+      res.status(201).json({
+        detail: data.status_detail,
+        status: data.status,
+        id: data.id,
+      });
+
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+      const { errorMessage, errorStatus } = validateError(error);
+      res.status(errorStatus).json({ error_message: errorMessage });
+    });
+});
+
+function validateError(error) {
+  let errorMessage = "Unknown error cause";
+  let errorStatus = 400;
+
+  return { errorMessage, errorStatus };
 }
 
 module.exports = router;

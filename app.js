@@ -65,7 +65,6 @@ io.on('connection', socket => {
   }
 
   const session = socket.request.session;
-  console.log(`saving sid ${socket.id} in session ${session.id}`);
   session.socketId = socket.id;
   session.save();
   

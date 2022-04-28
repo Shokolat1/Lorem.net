@@ -1,8 +1,4 @@
-{{!-- {{#if session}} --}}
-    {{>navActivo}}
-{{!-- {{else}}
-    {{>navbar}}
-{{/if}} --}}
+{{>navActivo}}
     
 {{>areaP}}
 
@@ -66,6 +62,44 @@
       <textarea class="form-control" id="formExtra" rows="3" name="infoExtra"></textarea>
     </div>
     <br>
+<div>
+  <center>
+    <center>
+        <legend style="color: black;">Tarjeta</legend>
+    </center>
+    <form id="form-checkout" method="POST" action="/mercado">
+        <input type="text" id="form-checkout__cardNumber" placeholder="Numero de tarjeta" class="form-control" />
+        <br>
+        <input type="text" id="form-checkout__cardExpirationMonth" placeholder="(MM)" class="form-control"/>
+        <br>
+        <input type="text" id="form-checkout__cardExpirationYear" placeholder="(YY o YYYY)" class="form-control"/>
+        <br>
+        <input type="text" name="cardholderName" id="form-checkout__cardholderName" class="form-control"
+            placeholder="Titular de la tarjeta" />
+            <br>
+        <input type="email" name="cardholderEmail" id="form-checkout__cardholderEmail" placeholder="E-mail"class="form-control" />
+        <br>
+        <input type="text" id="form-checkout__securityCode" placeholder="Código de seguridad" class="form-control"/>
+        <br>
+        <select name="issuer" id="form-checkout__issuer" class="form-select">
+          <br><br>
+            <option value="" disabled selected>Seleccione el emisor</option>
+        </select>
+        <br>
+        <input type="text" name="identificationNumber" id="form-checkout__identificationNumber"
+            placeholder="Número de documento" hidden/>
+        <select name="installments" id="form-checkout__installments" class="form-select">
+            <option value="" disabled selected>Elige la cantidad de cuotas</option>
+        </select>
+        <input id="token" name="token" type="hidden" />
+        <input id="paymentMethodId" name="paymentMethodId" type="hidden" />
+        <input id="transactionAmount" name="transactionAmount" type="hidden" value="100" />
+        <input id="description" name="description" type="hidden" value="product description" />
+        {{!-- <button type="submit" id="form-checkout__submit">Pagar</button> --}}
+    </form>
+    </center>
+</div>
+<br>
     <center>
       <button type="submit" class="buttonAP">
           <span>Cotizar</span>
@@ -83,3 +117,5 @@
 <br>
 
 {{>footer}}
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+<script src="./javascripts/mercado.js"></script>
